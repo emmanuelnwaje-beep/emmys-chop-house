@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Emmy's Chop-House | Order Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: #d4af37;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #fff;
+        }
+
+        .dashboard {
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .top-bar h2 {
+            font-size: 24px;
+        }
+
+        .back-btn {
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .stat-card h3 {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .stat-card strong {
+            font-size: 28px;
+        }
+
+        .controls {
+            background: #fff;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .controls input,
+        .controls select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .danger-btn {
+            background: #c62828;
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #ordersContainer {
+            display: grid;
+            gap: 20px;
+        }
+
+        .order-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .order-id {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-new {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .status-preparing {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .status-completed {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-cancelled {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .customer-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #f8f8f8;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .info-box small {
+            display: block;
+            color: #777;
+            margin-bottom: 4px;
+        }
+
+        .items {
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            margin: 15px 0;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+        }
+
+        .order-total {
+            text-align: right;
+            font-size: 20px;
+            font-weight: bold;
+            color: #b8860b;
+        }
+
+        .order-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .order-actions button {
+            border: none;
+            padding: 10px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .prepare-btn {
+            background: #ff9800;
+            color: #fff;
+        }
+
+        .complete-btn {
+            background: #2e7d32;
+            color: #fff;
+        }
+
+        .cancel-btn {
+            background: #c62828;
+            color: #fff;
+        }
+
+        .delete-btn {
+            background: #333;
+            color: #fff;
+        }
+
+        .empty {
+            background: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 12px;
+            color: #777;
+        }
+
+        @media (max-width: 800px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .customer-info {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>EMMY'S CHOP-HOUSE</h1>
+    <p>Order Management</p>
+</header>
+
+<main class="dashboard">
+
+    <div class="top-bar">
+    <h2>Orders Dashboard</h2>
+
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+        <a href="index.html" class="back-btn">
+            ← Back to Website
+        </a>
+
+        <button
+            id="logoutBtn"
+            class="back-btn"
+            style="border:none; cursor:pointer;"
+        >
+            Logout
+        </button>
+
+    </div>
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <h3>Total Orders</h3>
+            <strong id="totalOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>New Orders</h3>
+            <strong id="newOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Preparing</h3>
+            <strong id="preparingOrders">0</strong>
+        </div>
+
+        <div class="stat-card">
+            <h3>Completed</h3>
+            <strong id="completedOrders">0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- CONTROLS -->
+
+    <section class="controls">
+
+        <input
+            type="search"
+            id="searchOrders"
+            placeholder="Search customer or order ID..."
+        >
+
+        <select id="statusFilter">
+
+            <option value="all">
+                All Orders
+            </option>
+
+            <option value="New">
+                New
+            </option>
+
+            <option value="Preparing">
+                Preparing
+            </option>
+
+            <option value="Completed">
+                Completed
+            </option>
+
+            <option value="Cancelled">
+                Cancelled
+            </option>
+
+        </select>
+
+        <button
+            class="danger-btn"
+            id="clearOrders"
+        >
+            Clear All Orders
+        </button>
+
+    </section>
+
+
+    <!-- ORDERS -->
+
+    <section id="ordersContainer"></section>
+
+</main>
+  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase.js"></script>
+
+<script>
+  // =========================
+// ADMIN LOGIN PROTECTION
+// =========================
+
+if (
+    sessionStorage.getItem("emmysAdminLoggedIn") !== "true"
+) {
+    window.location.href = "admin-login.html";
+}
+  // =========================
+// LOGOUT
+// =========================
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener("click", () => {
+
+        sessionStorage.removeItem(
+            "emmysAdminLoggedIn"
+        );
+
+        window.location.href =
+            "admin-login.html";
+
+    });
+
+  }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    let orders = [];
+
+    async function loadOrders() {
+
+    const { data, error } =
+        await supabaseClient
+            .from("orders")
+            .select("*")
+            .order("created_at", {
+                ascending: false
+            });
+
+    if (error) {
+        console.error(
+            "Supabase load error:",
+            error
+        );
+
+        orders = [];
+        return;
+    }
+
+    orders = data || [];
+
+    orders = orders.map(order => ({
+        id: order.order_id,
+
+        customer: {
+            name: order.customer_name,
+            phone: order.customer_phone
+        },
+
+        items: order.items || [],
+
+        subtotal: Number(order.subtotal),
+
+        deliveryFee: Number(order.delivery_fee),
+
+        total: Number(order.total),
+
+        fulfilment: order.order_type,
+
+        address: order.delivery_address,
+
+        note: order.note,
+
+        status: order.status,
+
+        date: new Date(
+            order.created_at
+        ).toLocaleString()
+    }));
+
+}
+
+
+    function saveOrders() {
+
+        localStorage.setItem(
+            "emmysOrders",
+            JSON.stringify(orders)
+        );
+
+    }
+
+
+    function updateStats() {
+
+        document.getElementById("totalOrders")
+            .textContent = orders.length;
+
+        document.getElementById("newOrders")
+            .textContent =
+            orders.filter(
+                order => order.status === "New"
+            ).length;
+
+        document.getElementById("preparingOrders")
+            .textContent =
+            orders.filter(
+                order => order.status === "Preparing"
+            ).length;
+
+        document.getElementById("completedOrders")
+            .textContent =
+            orders.filter(
+                order => order.status === "Completed"
+            ).length;
+
+    }
+
+
+    function displayOrders() {
+
+        const container =
+            document.getElementById(
+                "ordersContainer"
+            );
+
+        const search =
+            document.getElementById(
+                "searchOrders"
+            ).value
+            .toLowerCase()
+            .trim();
+
+        const filter =
+            document.getElementById(
+                "statusFilter"
+            ).value;
+
+
+        let filteredOrders =
+            orders.filter(order => {
+
+                const matchesSearch =
+                    order.id.toLowerCase().includes(search) ||
+                    order.customer.name.toLowerCase().includes(search) ||
+                    order.customer.phone.includes(search);
+
+                const matchesStatus =
+                    filter === "all" ||
+                    order.status === filter;
+
+                return matchesSearch &&
+                       matchesStatus;
+
+            });
+
+
+        container.innerHTML = "";
+
+
+        if (filteredOrders.length === 0) {
+
+            container.innerHTML = `
+                <div class="empty">
+                    <h3>No orders found</h3>
+                    <p>New customer orders will appear here.</p>
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        filteredOrders
+            .slice()
+            .reverse()
+            .forEach(order => {
+
+                const card =
+                    document.createElement("article");
+
+                card.className = "order-card";
+
+
+                const statusClass =
+                    order.status.toLowerCase();
+
+
+                let itemsHTML = "";
+
+                order.items.forEach(item => {
+
+                    itemsHTML += `
+                        <div class="item-row">
+                            <span>
+                                ${item.quantity} ×
+                                ${escapeHTML(item.name)}
+                            </span>
+
+                            <strong>
+                                ₦${(
+                                    item.price *
+                                    item.quantity
+                                ).toLocaleString()}
+                            </strong>
+                        </div>
+                    `;
+
+                });
+
+
+                card.innerHTML = `
+
+                    <div class="order-header">
+
+                        <div class="order-id">
+                            ${escapeHTML(order.id)}
+                        </div>
+
+                        <span class="status status-${statusClass}">
+                            ${escapeHTML(order.status)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="customer-info">
+
+                        <div class="info-box">
+                            <small>Customer</small>
+                            <strong>
+                                ${escapeHTML(
+                                    order.customer.name
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="info-box">
+    <small>Phone</small>
+    <strong>
+        <a
+            href="tel:${escapeHTML(order.customer.phone)}"
+            style="color: inherit; text-decoration: none;"
+        >
+            ${escapeHTML(order.customer.phone)}
+        </a>
+    </strong>
+</div>
+
+                        <div class="info-box">
+                            <small>Order Type</small>
+                            <strong>
+                                ${escapeHTML(
+                                    order.fulfilment
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="info-box">
+                            <small>Date</small>
+                            <strong>
+                                ${escapeHTML(
+                                    order.date
+                                )}
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="items">
+
+                        ${itemsHTML}
+
+                    </div>
+
+
+                    ${
+                        order.fulfilment === "delivery"
+                        ? `
+                            <div class="info-box">
+                                <small>Delivery Address</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        order.address
+                                    )}
+                                </strong>
+                            </div>
+                        `
+                        : ""
+                    }
+
+
+                    ${
+                        order.note
+                        ? `
+                            <div
+                                class="info-box"
+                                style="margin-top:10px;"
+                            >
+                                <small>Customer Note</small>
+                                <strong>
+                                    ${escapeHTML(
+                                        order.note
+                                    )}
+                                </strong>
+                            </div>
+                        `
+                        : ""
+                    }
+
+
+                    <div class="order-total">
+                        Total:
+                        ₦${order.total.toLocaleString()}
+                    </div>
+
+
+                    <div class="order-actions">
+
+                        <button
+                            class="prepare-btn"
+                            data-id="${order.id}"
+                            data-status="Preparing"
+                        >
+                            Preparing
+                        </button>
+
+                        <button
+                            class="complete-btn"
+                            data-id="${order.id}"
+                            data-status="Completed"
+                        >
+                            Completed
+                        </button>
+
+                        <button
+                            class="cancel-btn"
+                            data-id="${order.id}"
+                            data-status="Cancelled"
+                        >
+                            Cancel
+                        </button>
+
+                        <button
+                            class="delete-btn"
+                            data-id="${order.id}"
+                            data-action="delete"
+                        >
+                            Delete
+                        </button>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(card);
+
+            });
+
+
+        addActionListeners();
+
+    }
+
+
+    function addActionListeners() {
+
+        document
+            .querySelectorAll(
+                "[data-status]"
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                   async () => {
+
+                        const id =
+                            button.dataset.id;
+
+                        const newStatus =
+                            button.dataset.status;
+
+
+                        const order =
+                            orders.find(
+                                item =>
+                                    item.id === id
+                            );
+
+
+                       if (order) {
+
+    const { error } =
+        await supabaseClient
+            .from("orders")
+            .update({
+                status: newStatus
+            })
+            .eq("order_id", id);
+
+    if (error) {
+
+        console.error(
+            "Supabase status update error:",
+            error
+        );
+
+        alert(
+            "Could not update the order online."
+        );
+
+        return;
+    }
+
+    order.status = newStatus;
+
+    render();
+
+}
+
+                    }
+                );
+
+            });
+
+
+        document
+            .querySelectorAll(
+                '[data-action="delete"]'
+            )
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    async () => {
+
+                        const id =
+                            button.dataset.id;
+
+
+                        const confirmed =
+                            confirm(
+                                "Delete this order?"
+                            );
+
+
+                        if (!confirmed) {
+                            return;
+                        }
+
+
+                        const { error } =
+    await supabaseClient
+        .from("orders")
+        .delete()
+        .eq("order_id", id);
+
+if (error) {
+
+    console.error(
+        "Supabase delete error:",
+        error
+    );
+
+    alert(
+        "Could not delete the order online."
+    );
+
+    return;
+}
+
+orders =
+    orders.filter(
+        order =>
+            order.id !== id
+    );
+
+
+                        saveOrders();
+
+                        render();
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    document
+        .getElementById("searchOrders")
+        .addEventListener(
+            "input",
+            displayOrders
+        );
+
+
+    document
+        .getElementById("statusFilter")
+        .addEventListener(
+            "change",
+            displayOrders
+        );
+
+
+    document
+        .getElementById("clearOrders")
+        .addEventListener(
+            "click",
+            async () => {
+
+                if (orders.length === 0) {
+                    return;
+                }
+
+
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to delete ALL orders?"
+                    );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                const { error } =
+    await supabaseClient
+        .from("orders")
+        .delete()
+        .neq("order_id", "");
+
+if (error) {
+
+    console.error(
+        "Supabase clear orders error:",
+        error
+    );
+
+    alert(
+        "Could not clear orders online."
+    );
+
+    return;
+}
+
+orders = [];
+
+saveOrders();
+
+                render();
+
+            }
+        );
+
+
+    function render() {
+
+        updateStats();
+
+        displayOrders();
+
+    }
+
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    loadOrders().then(() => {
+    render();
+
+});
+});
+supabaseClient
+    .channel("orders-realtime")
+    .on(
+        "postgres_changes",
+        {
+            event: "*",
+            schema: "public",
+            table: "orders"
+        },
+        () => {
+            loadOrders().then(() => {
+                render();
+            });
+        }
+    )
+    .subscribe();
+
+</script>
+
+</body>
+</html>
