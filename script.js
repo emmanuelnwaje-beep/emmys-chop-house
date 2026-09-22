@@ -621,36 +621,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ORDER ID
-    ========================= */
+   ORDER ID
+========================= */
 
-    let orders = [];
+const { data: generatedOrderId, error: orderIdError } =
+  await supabaseClient.rpc("get_next_order_id");
 
-    try {
+if (orderIdError || !generatedOrderId) {
+  console.error("Order ID error:", orderIdError);
+  alert("Unable to create order number. Please try again.");
+  return;
+}
 
-      orders =
-        JSON.parse(
-          localStorage.getItem("emmysOrders")
-        ) || [];
-
-    } catch (error) {
-
-      orders = [];
-
-    }
-
-
-    if (!Array.isArray(orders)) {
-      orders = [];
-    }
-
-
-    const orderNumber =
-      orders.length + 1;
-
-
-    const orderId =
-      `ORD-${String(orderNumber).padStart(4, "0")}`;
+const orderId = generatedOrderId;
 
 
     /* =========================
@@ -693,14 +676,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     };
 
-
-    orders.push(order);
-
-
-    localStorage.setItem(
-      "emmysOrders",
-      JSON.stringify(orders)
-    );
+    
     /* =========================
    SAVE ORDER TO SUPABASE
 ========================= */
