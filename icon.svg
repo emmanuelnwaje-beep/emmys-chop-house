@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 512 512">
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="96" fill="#ffffff"/>
+
+  <!-- Chef Hat -->
+  <path
+    d="M150 220
+       C125 205 112 180 120 153
+       C128 126 153 108 181 112
+       C194 80 224 60 256 60
+       C288 60 318 80 331 112
+       C359 108 384 126 392 153
+       C400 180 387 205 362 220
+       L362 260
+       L150 260 Z"
+    fill="#ff5a00"/>
+
+  <!-- Hat Base -->
+  <rect
+    x="145"
+    y="245"
+    width="222"
+    height="38"
+    rx="10"
+    fill="#ff5a00"/>
+
+  <!-- Fork -->
+  <path
+    d="M178 305
+       L225 352
+       L182 395"
+    fill="none"
+    stroke="#111111"
+    stroke-width="22"
+    stroke-linecap="round"
+    stroke-linejoin="round"/>
+
+  <path
+    d="M168 302 L143 327
+       M185 319 L160 344
+       M202 336 L177 361"
+    stroke="#111111"
+    stroke-width="14"
+    stroke-linecap="round"/>
+
+  <!-- Spoon -->
+  <ellipse
+    cx="333"
+    cy="324"
+    rx="32"
+    ry="43"
+    fill="#111111"/>
+
+  <path
+    d="M315 353 L274 394"
+    stroke="#111111"
+    stroke-width="22"
+    stroke-linecap="round"/>
+
+</svg>

@@ -1,24 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* =========================
-     MOBILE MENU
-  ========================= */
+/* =========================
+   MOBILE MENU
+========================= */
 
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".navbar");
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navbar");
 
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+if (menuToggle && navLinks) {
+
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen = navLinks.classList.toggle("active");
+
+        menuToggle.classList.toggle("open", isOpen);
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
-    });
-  }
+    navLinks.querySelectorAll("a").forEach(function (link) {
 
+        link.addEventListener("click", function () {
+
+            navLinks.classList.remove("active");
+            menuToggle.classList.remove("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        });
+
+    });
+
+}
 
   /* =========================
      MENU CATEGORY FILTER
@@ -63,6 +83,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const WHATSAPP_NUMBER = "2349060256867";
 
   let cart = [];
+  /* =========================
+   CART FOOD IMAGES
+========================= */
+
+const FOOD_IMAGES = {
+    "Jollof Rice & Chicken": "images/jollof.jpg",
+    "Fried Rice & Chicken": "images/fried-rice.jpg",
+    "Ofada Rice & Sauce": "images/ofada.jpg",
+    "Pounded Yam & Egusi": "images/pounded-yam.jpg",
+    "Pounded Yam & Soup": "images/pounded-yam.jpg",
+    "Emmy's Signature Burger": "images/burger.jpg",
+    "Loaded Shawarma": "images/shawarma.jpg"
+};
 
   try {
     cart = JSON.parse(
@@ -372,53 +405,57 @@ document.addEventListener("DOMContentLoaded", () => {
           document.createElement("div");
 
         itemElement.className = "cart-item";
+itemElement.innerHTML = `
+    <div class="cart-item-image">
+        <img
+            src="${FOOD_IMAGES[item.name] || 'images/hero.jpg'}"
+            alt="${escapeHTML(item.name)}"
+        >
+    </div>
 
+    <div class="cart-item-info">
 
-        itemElement.innerHTML = `
-          <div class="cart-item-info">
+        <h4>
+            ${escapeHTML(item.name)}
+        </h4>
 
-            <h4>
-              ${escapeHTML(item.name)}
-            </h4>
+        <p>
+            ₦${item.price.toLocaleString()}
+        </p>
 
-            <p>
-              ₦${item.price.toLocaleString()}
-            </p>
+    </div>
 
-          </div>
+    <div class="quantity-controls">
 
-          <div class="quantity-controls">
-
-            <button
-              class="decrease-item"
-              data-index="${index}"
-            >
-              −
-            </button>
-
-            <span>
-              ${item.quantity}
-            </span>
-
-            <button
-              class="increase-item"
-              data-index="${index}"
-            >
-              +
-            </button>
-
-          </div>
-
-          <button
-            class="remove-item"
+        <button
+            class="decrease-item"
             data-index="${index}"
-          >
-            Remove
-          </button>
-        `;
+        >
+            −
+        </button>
 
+        <span>
+            ${item.quantity}
+        </span>
 
-        cartItems.appendChild(itemElement);
+        <button
+            class="increase-item"
+            data-index="${index}"
+        >
+            +
+        </button>
+
+    </div>
+
+    <button
+        class="remove-item"
+        data-index="${index}"
+    >
+        Remove
+    </button>
+`;
+
+    cartItems.appendChild(itemElement);
 
       });
 

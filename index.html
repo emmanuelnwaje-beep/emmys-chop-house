@@ -1,743 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Emmy's Chop-House | Good Food. Good Mood.</title>
+    <meta name="description" content="Emmy's Chop-House — delicious meals, fast ordering and catering in Apete, Ibadan.">
+    <meta name="theme-color" content="#111111">
+
+    <title>Emmy's Chop-House | Good Food. Better Mood.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#101010">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Emmy's Chop-House">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<header class="header" id="top">
+    <a href="#home" class="logo" aria-label="Emmy's Chop-House home">
+        <span class="logo-main">Emmy's</span>
+        <span class="logo-sub">Chop-House</span>
+    </a>
 
-    <header class="header">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#about">About</a>
+        <a href="#catering">Catering</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <a href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
+       class="header-order" target="_blank" rel="noopener">
+        Order Now <span>↗</span>
+    </a>
 
-        <a href="#home" class="logo">
-            EMMY'S <span>CHOP-HOUSE</span>
-        </a>
-
-        <nav class="navbar" id="navbar">
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <a
-            href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
-            class="header-order"
-            target="_blank">
-            Order Now
-        </a>
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open menu">
-            ☰
-        </button>
-
-    </header>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+</header>
 
 
-    <!-- ================= HERO ================= -->
+<main>
 
-    <section class="hero" id="home">
+<section class="hero" id="home">
+    <div class="hero-overlay"></div>
 
-        <div class="hero-content">
-
-            <p class="hero-small">
+    <div class="hero-inner">
+        <div class="hero-copy reveal">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
                 WELCOME TO EMMY'S CHOP-HOUSE
-            </p>
-
-            <h1>
-                Good Food.
-                <span>Good Mood.</span>
-            </h1>
-
-            <p class="hero-text">
-                Delicious Nigerian meals, freshly prepared
-                and served with the taste you love.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#menu" class="btn primary-btn">
-                    View Menu
-                </a>
-
-                <a
-                    href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
-                    class="btn whatsapp-btn"
-                    target="_blank">
-                    Order on WhatsApp
-                </a>
-
             </div>
 
+            <h1>
+                Good Food.<br>
+                <em>Better Mood.</em>
+            </h1>
+
+            <p>
+                Big flavours, beautiful meals and that feeling you get
+                when the first bite is exactly what you wanted.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#menu" class="btn btn-primary">Explore the Menu <span>→</span></a>
+                <a href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
+                   class="btn btn-outline" target="_blank" rel="noopener">
+                    Order on WhatsApp
+                </a>
+            </div>
+
+            <div class="hero-meta">
+                <div><strong>Fresh</strong><span>Made with care</span></div>
+                <div><strong>Fast</strong><span>Easy ordering</span></div>
+                <div><strong>Local</strong><span>Apete, Ibadan</span></div>
+            </div>
         </div>
 
-    </section>
+        <div class="hero-badge">
+            <span class="badge-star">✦</span>
+            <span>GOOD FOOD</span>
+            <small>BETTER MOOD</small>
+        </div>
+    </div>
+
+    <a href="#menu" class="scroll-cue" aria-label="Scroll to menu">
+        <span>SCROLL</span><i></i>
+    </a>
+</section>
 
 
-    <!-- ================= MENU ================= -->
-
-    <section class="featured" id="menu">
-
-        <div class="section-heading">
-
-            <p>OUR MENU</p>
-
-            <h2>Popular Choices</h2>
-
-            <span>
-                Freshly prepared meals made to satisfy your cravings.
-            </span>
-
+<section class="menu-section" id="menu">
+    <div class="section-shell">
+        <div class="section-heading split-heading reveal">
+            <div>
+                <p class="section-kicker">THE CHOP-HOUSE MENU</p>
+                <h2>Come hungry.<br><em>Leave happy.</em></h2>
+            </div>
+            <p class="section-intro">
+                From Nigerian favourites to fast-food cravings,
+                choose your meal and build your order in a few taps.
+            </p>
         </div>
 
-
-        <!-- MENU CATEGORIES -->
-
-        <div class="menu-categories">
-
+        <div class="menu-categories" role="tablist" aria-label="Food categories">
             <button class="category-btn active">All</button>
-
-            <button class="category-btn">
-                Rice & Specials
-            </button>
-
-            <button class="category-btn">
-                Soups & Swallow
-            </button>
-
-            <button class="category-btn">
-                Fast Food
-            </button>
-
-            <button class="category-btn">
-                Drinks
-            </button>
-
+            <button class="category-btn">Rice &amp; Specials</button>
+            <button class="category-btn">Soups &amp; Swallow</button>
+            <button class="category-btn">Fast Food</button>
+            <button class="category-btn">Drinks</button>
         </div>
-
-
-        <!-- FOOD GRID -->
 
         <div class="food-grid">
 
-
-            <!-- JOLLOF -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/jollof.jpg"
-                        alt="Jollof Rice and Chicken">
+                    <img src="images/jollof.jpg" alt="Jollof rice and chicken" loading="lazy">
+                    <span class="food-tag">FAVOURITE</span>
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Rice & Specials
-                    </span>
-
-                    <h3>
-                        Jollof Rice & Chicken
-                    </h3>
-
-                    <p>
-                        Flavourful Nigerian jollof rice
-                        served with juicy chicken.
-                    </p>
-
+                    <span class="food-category">Rice &amp; Specials</span>
+                    <h3>Jollof Rice &amp; Chicken</h3>
+                    <p>Rich, smoky Nigerian jollof served with well-seasoned chicken.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦5,500
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Jollof Rice & Chicken"
-                            data-price="5500">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦5,500</strong>
+                        <button class="add-to-cart" data-name="Jollof Rice & Chicken" data-price="5500">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
-
-            <!-- FRIED RICE -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/fried-rice.jpg"
-                        alt="Fried Rice and Chicken">
+                    <img src="images/fried-rice.jpg" alt="Fried rice and chicken" loading="lazy">
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Rice & Specials
-                    </span>
-
-                    <h3>
-                        Fried Rice & Chicken
-                    </h3>
-
-                    <p>
-                        Delicious fried rice served
-                        with well-seasoned chicken.
-                    </p>
-
+                    <span class="food-category">Rice &amp; Specials</span>
+                    <h3>Fried Rice &amp; Chicken</h3>
+                    <p>Colourful fried rice packed with vegetables and served with chicken.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦5,500
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Fried Rice & Chicken"
-                            data-price="5500">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦5,500</strong>
+                        <button class="add-to-cart" data-name="Fried Rice & Chicken" data-price="5500">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
-
-            <!-- OFADA -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/ofada.jpg"
-                        alt="Ofada Rice and Sauce">
+                    <img src="images/ofada.jpg" alt="Ofada rice meal" loading="lazy">
+                    <span class="food-tag">LOCAL FAVOURITE</span>
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Rice & Specials
-                    </span>
-
-                    <h3>
-                        Ofada Rice & Sauce
-                    </h3>
-
-                    <p>
-                        Local Ofada rice served with
-                        rich traditional sauce.
-                    </p>
-
+                    <span class="food-category">Rice &amp; Specials</span>
+                    <h3>Ofada Rice &amp; Sauce</h3>
+                    <p>Local Ofada rice paired with rich, traditional pepper sauce.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦6,000
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Ofada Rice & Sauce"
-                            data-price="6000">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦6,000</strong>
+                        <button class="add-to-cart" data-name="Ofada Rice & Sauce" data-price="6000">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
-
-            <!-- POUNDED YAM -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/pounded-yam.jpg"
-                        alt="Pounded Yam and Egusi">
+                    <img src="images/pounded-yam.jpg" alt="Pounded yam and soup" loading="lazy">
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Soups & Swallow
-                    </span>
-
-                    <h3>
-                        Pounded Yam & Egusi
-                    </h3>
-
-                    <p>
-                        Soft pounded yam paired with
-                        delicious Egusi soup.
-                    </p>
-
+                    <span class="food-category">Soups &amp; Swallow</span>
+                    <h3>Pounded Yam &amp; Soup</h3>
+                    <p>Soft pounded yam served with a rich, hearty Nigerian soup.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦5,500
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Pounded Yam & Egusi"
-                            data-price="5500">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦5,500</strong>
+                        <button class="add-to-cart" data-name="Pounded Yam & Soup" data-price="5500">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
-
-            <!-- BURGER -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/burger.jpg"
-                        alt="Chicken Burger">
+                    <img src="images/burger.jpg" alt="Emmy's Chop-House burger" loading="lazy">
+                    <span class="food-tag">SIGNATURE</span>
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Fast Food
-                    </span>
-
-                    <h3>
-                        Chicken Burger
-                    </h3>
-
-                    <p>
-                        Juicy chicken burger prepared
-                        with fresh ingredients.
-                    </p>
-
+                    <span class="food-category">Fast Food</span>
+                    <h3>Emmy's Signature Burger</h3>
+                    <p>A loaded burger with fresh vegetables, sauce and a generous filling.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦4,500
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Chicken Burger"
-                            data-price="4500">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦4,500</strong>
+                        <button class="add-to-cart" data-name="Emmy's Signature Burger" data-price="4500">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
-
-            <!-- SHAWARMA -->
-
-            <article class="food-card">
-
+            <article class="food-card reveal">
                 <div class="food-image">
-                    <img
-                        src="images/shawarma.jpg"
-                        alt="Beef Shawarma">
+                    <img src="images/shawarma.jpg" alt="Chicken shawarma" loading="lazy">
                 </div>
-
                 <div class="food-info">
-
-                    <span class="food-category">
-                        Fast Food
-                    </span>
-
-                    <h3>
-                        Beef Shawarma
-                    </h3>
-
-                    <p>
-                        Tasty beef shawarma packed with
-                        fresh vegetables and sauce.
-                    </p>
-
+                    <span class="food-category">Fast Food</span>
+                    <h3>Loaded Shawarma</h3>
+                    <p>Generously filled shawarma with vegetables, meat and creamy sauce.</p>
                     <div class="food-bottom">
-
-                        <strong>
-                            ₦4,000
-                        </strong>
-
-                        <button
-                            class="add-to-cart"
-                            data-name="Beef Shawarma"
-                            data-price="4000">
-                            Add to Cart
-                        </button>
-
+                        <strong>₦4,000</strong>
+                        <button class="add-to-cart" data-name="Loaded Shawarma" data-price="4000">Add to Cart <span>+</span></button>
                     </div>
-
                 </div>
-
             </article>
 
         </div>
 
-    </section>
+        <div class="menu-note">
+            <span>✦</span> More meals and drinks can be added to the menu as your catalogue grows.
+        </div>
+    </div>
+</section>
 
 
-    <!-- ================= ABOUT ================= -->
+<section class="about-section" id="about">
+    <div class="section-shell about-grid">
+        <div class="about-image reveal">
+            <img src="images/hero.jpg" alt="Emmy's Chop-House dining space" loading="lazy">
+            <div class="image-caption">
+                <span>EMMY'S CHOP-HOUSE</span>
+                <strong>Good food. Better mood.</strong>
+            </div>
+        </div>
 
-    <section class="about" id="about">
-
-        <div class="about-content">
-
-            <p class="section-label">
-                ABOUT US
-            </p>
-
-            <h2>
-                Food Made With Passion
-            </h2>
-
+        <div class="about-copy reveal">
+            <p class="section-kicker">OUR STORY</p>
+            <h2>Food that feels<br><em>like a good day.</em></h2>
             <p>
-                At Emmy's Chop-House, we believe good food
-                brings people together. We prepare delicious
-                Nigerian meals using carefully selected
-                ingredients and recipes inspired by the
-                flavours we love.
+                Emmy's Chop-House is built around one simple idea:
+                good food should make people feel good. We bring together
+                Nigerian favourites, fast-food classics and satisfying
+                portions in one place.
             </p>
-
             <p>
-                Whether you're grabbing lunch, ordering dinner,
-                or simply satisfying a craving, we're here to
-                serve you something delicious.
+                Whether you're ordering lunch, grabbing something quick,
+                or planning food for an event, we're here to make the
+                experience simple and delicious.
             </p>
-
+            <a href="#contact" class="text-link">Come say hello <span>→</span></a>
         </div>
-
-    </section>
-
-
-    <!-- ================= WHY US ================= -->
-
-    <section class="why-us">
-
-        <div class="section-heading">
-
-            <p>WHY CHOOSE US</p>
-
-            <h2>
-                Made For Food Lovers
-            </h2>
-
-        </div>
+    </div>
+</section>
 
 
-        <div class="features">
-
-            <div class="feature">
-
-                <span>🍲</span>
-
-                <h3>
-                    Freshly Prepared
-                </h3>
-
-                <p>
-                    Meals prepared with fresh ingredients
-                    and care.
-                </p>
-
+<section class="feature-strip">
+    <div class="section-shell feature-grid">
+        <div class="feature reveal">
+            <span class="feature-icon">01</span>
+            <div>
+                <h3>Made with care</h3>
+                <p>Meals prepared to give you a satisfying experience.</p>
             </div>
-
-
-            <div class="feature">
-
-                <span>⚡</span>
-
-                <h3>
-                    Fast Service
-                </h3>
-
-                <p>
-                    Quick ordering and convenient
-                    takeaway service.
-                </p>
-
-            </div>
-
-
-            <div class="feature">
-
-                <span>❤️</span>
-
-                <h3>
-                    Great Taste
-                </h3>
-
-                <p>
-                    Classic Nigerian flavours you'll
-                    love coming back for.
-                </p>
-
-            </div>
-
         </div>
-
-    </section>
-
-
-    <!-- ================= GALLERY ================= -->
-
-    <section class="gallery-section" id="gallery">
-
-        <div class="section-heading">
-
-            <p>FOOD GALLERY</p>
-
-            <h2>
-                A Taste Before Your First Bite
-            </h2>
-
-            <span>
-                Take a look at some of our delicious favourites.
-            </span>
-
+        <div class="feature reveal">
+            <span class="feature-icon">02</span>
+            <div>
+                <h3>Easy ordering</h3>
+                <p>Add your favourites to the cart and order with ease.</p>
+            </div>
         </div>
+        <div class="feature reveal">
+            <span class="feature-icon">03</span>
+            <div>
+                <h3>Pickup or delivery</h3>
+                <p>Choose the option that works best for your order.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+
+<section class="catering-section" id="catering">
+    <div class="section-shell catering-card reveal">
+        <div class="catering-content">
+            <p class="section-kicker">EVENT CATERING</p>
+            <h2>Big gathering?<br><em>We've got the food.</em></h2>
+            <p>
+                Birthdays, naming ceremonies, parties, celebrations and
+                other events — tell us what you're planning and let's
+                talk about the food.
+            </p>
+            <a href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20want%20to%20ask%20about%20catering%20for%20an%20event."
+               class="btn btn-light" target="_blank" rel="noopener">
+                Ask About Catering <span>↗</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<section class="gallery-section" id="gallery">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <p class="section-kicker">FROM OUR KITCHEN</p>
+            <h2>A little taste<br><em>of Emmy's.</em></h2>
+        </div>
 
         <div class="gallery-grid">
-
-            <div class="gallery-item">
-                <img src="images/jollof.jpg" alt="Jollof rice meal">
+            <div class="gallery-item gallery-wide reveal">
+                <img src="images/burger.jpg" alt="Emmy's Chop-House burger" loading="lazy">
             </div>
-
-            <div class="gallery-item">
-                <img src="images/fried-rice.jpg" alt="Fried rice meal">
+            <div class="gallery-item reveal">
+                <img src="images/jollof.jpg" alt="Jollof rice and chicken" loading="lazy">
             </div>
-
-            <div class="gallery-item">
-                <img src="images/ofada.jpg" alt="Ofada rice meal">
+            <div class="gallery-item reveal">
+                <img src="images/fried-rice.jpg" alt="Fried rice and chicken" loading="lazy">
             </div>
-
-            <div class="gallery-item">
-                <img src="images/pounded-yam.jpg" alt="Pounded yam and soup">
+            <div class="gallery-item reveal">
+                <img src="images/shawarma.jpg" alt="Loaded shawarma" loading="lazy">
             </div>
-
-            <div class="gallery-item">
-                <img src="images/burger.jpg" alt="Chicken burger">
+            <div class="gallery-item reveal">
+                <img src="images/ofada.jpg" alt="Ofada rice meal" loading="lazy">
             </div>
-
-            <div class="gallery-item">
-                <img src="images/shawarma.jpg" alt="Beef shawarma">
+            <div class="gallery-item gallery-wide reveal">
+                <img src="images/pounded-yam.jpg" alt="Pounded yam and soup" loading="lazy">
             </div>
-
         </div>
+    </div>
+</section>
 
-    </section>
 
-
-    <!-- ================= REVIEWS ================= -->
-
-    <section class="reviews" id="reviews">
-
-        <div class="section-heading">
-
-            <p>CUSTOMER REVIEWS</p>
-
-            <h2>
-                What Food Lovers Say
-            </h2>
-
+<section class="reviews-section" id="reviews">
+    <div class="section-shell">
+        <div class="section-heading reveal">
+            <p class="section-kicker">THE LOVE</p>
+            <h2>Good food has<br><em>something to say.</em></h2>
         </div>
-
 
         <div class="review-grid">
-
-            <article class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "The food was fresh, tasty and
-                    beautifully packaged. Definitely
-                    ordering again!"
-                </p>
-
-                <h3>
-                    — Ada
-                </h3>
-
+            <article class="review-card reveal">
+                <div class="stars">★★★★★</div>
+                <p>"The food was fresh, tasty and beautifully packaged. Definitely ordering again!"</p>
+                <strong>— Ada</strong>
             </article>
-
-
-            <article class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "The jollof rice and chicken were
-                    amazing. Everything arrived hot
-                    and delicious."
-                </p>
-
-                <h3>
-                    — Tunde
-                </h3>
-
+            <article class="review-card review-featured reveal">
+                <div class="stars">★★★★★</div>
+                <p>"The jollof rice and chicken were amazing. Everything arrived hot and delicious."</p>
+                <strong>— Tunde</strong>
             </article>
-
-
-            <article class="review-card">
-
-                <div class="stars">
-                    ★★★★★
-                </div>
-
-                <p>
-                    "Great portions, great taste and
-                    very easy ordering. I loved the
-                    whole experience."
-                </p>
-
-                <h3>
-                    — Favour
-                </h3>
-
+            <article class="review-card reveal">
+                <div class="stars">★★★★★</div>
+                <p>"Great portions, great taste and very easy ordering. I loved the whole experience."</p>
+                <strong>— Favour</strong>
             </article>
-
         </div>
-
-    </section>
-
-
-    <!-- ================= CONTACT ================= -->
-
-    <section class="contact" id="contact">
-
-        <div class="section-heading">
-
-            <p>GET IN TOUCH</p>
-
-            <h2>
-                Ready To Eat?
-            </h2>
-
-            <span>
-                Place your order or visit us today.
-            </span>
-
-        </div>
+    </div>
+</section>
 
 
-        <div class="contact-info">
+<section class="contact-section" id="contact">
+    <div class="section-shell contact-grid">
+        <div class="contact-copy reveal">
+            <p class="section-kicker">COME THROUGH</p>
+            <h2>Let's make<br><em>your next meal.</em></h2>
+            <p>Order online, chat with us or come visit Emmy's Chop-House in Apete, Ibadan.</p>
 
-            <p>
-                📍 Apete, Ibadan, Oyo State
-            </p>
+            <div class="contact-list">
+                <a href="tel:+2349060256867"><span>PHONE</span>09060256867</a>
+                <div><span>LOCATION</span>Apete, Ibadan, Oyo State</div>
+                <div><span>HOURS</span>Mon–Sat 10:00 AM–10:00 PM · Sun 12:00 PM–9:00 PM</div>
+            </div>
 
-            <p>
-    📞
-    <a href="tel:+2349060256867">
-        09060256867
-    </a>
-            </p>
-                
-
-            <p>
-                🕐 Monday – Saturday:
-                10:00 AM – 10:00 PM
-            </p>
-
-            <p>
-                🕐 Sunday:
-                12:00 PM – 9:00 PM
-            </p>
-
-            <a
-                href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
-                class="btn whatsapp-btn"
-                target="_blank">
-                Chat With Us on WhatsApp
+            <a href="https://wa.me/2349060256867?text=Hello%20Emmy's%20Chop-House%2C%20I%20would%20like%20to%20place%20an%20order."
+               class="btn btn-primary" target="_blank" rel="noopener">
+                Chat on WhatsApp <span>↗</span>
             </a>
-
         </div>
-      <div class="map-container">
 
-    <h3>Find Us</h3>
+        <div class="map-container reveal">
+            <div class="map-label">FIND EMMY'S</div>
+            <iframe
+                src="https://www.google.com/maps?q=Fanawole,+Oloya,+Apete,+Ibadan,+Oyo,+Nigeria&output=embed"
+                title="Emmy's Chop-House location"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
 
-        <iframe
-    src="https://www.google.com/maps?q=Fanawole,+Oloya,+Apete,+Ibadan,+Oyo,+Nigeria&output=embed"
-    width="100%"
-    height="350"
-    style="border:0;"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-      </div>
-
-    </section>
+</main>
 
 
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <h3>
-            EMMY'S CHOP-HOUSE
-        </h3>
-
-        <p>
-            Good Food. Good Mood.
-        </p>
-
-        <p>
-            📍 Apete, Ibadan
-        </p>
-
-        <p>
-            📞 09060256867
-        </p>
-
-        <p>
-            © 2026 Emmy's Chop-House.
-            All rights reserved.
-        </p>
-
-    </footer>
+<footer class="footer">
+    <div class="section-shell footer-top">
+        <div>
+            <a href="#home" class="footer-logo">Emmy's <span>Chop-House</span></a>
+            <p>Good food. Better mood.</p>
+        </div>
+        <div class="footer-links">
+            <a href="#menu">Menu</a>
+            <a href="#catering">Catering</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a href="#top" class="back-top">Back to top ↑</a>
+    </div>
+    <div class="section-shell footer-bottom">
+        <span>© 2026 Emmy's Chop-House. All rights reserved.</span>
+        <span>Apete, Ibadan · Nigeria</span>
+    </div>
+</footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
 <script src="script.js"></script>
 
-</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
+    document.querySelectorAll(".reveal").forEach((el) => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        observer.observe(el);
+    });
+});
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(() => {
+                console.log("Emmy's Chop-House PWA ready.");
+            })
+            .catch(error => {
+                console.error("PWA registration failed:", error);
+            });
+    });
+}
+</script>
+</body>
 </html>
